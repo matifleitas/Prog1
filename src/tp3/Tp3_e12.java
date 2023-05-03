@@ -6,7 +6,7 @@ public class Tp3_e12 {
 	public static void main (String[] args) {
 		int num_user = obt_Num();
 	}
-	
+
 	public static int obt_Num() {
 		int num = 0;
 		BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));
@@ -15,7 +15,7 @@ public class Tp3_e12 {
 			num=Integer.valueOf(entrada.readLine());
 			
 			if ((num>=1)&&(num<=6)){	
-				lanzamiento_dado(num);
+				lanzamiento_dado_1000Veces(num);
 			} else {
 				System.out.println("Ingreso un numero no valido");
 			}
@@ -24,7 +24,7 @@ public class Tp3_e12 {
 		}
 		return num;
 	}
-	public static void lanzamiento_dado(int num_user) {
+	public static void lanzamiento_dado_1000Veces(int num_user) {
 		int lanzamiento_MAX = 1000;
 		int suma_mismo_numDado = 0;
 		
