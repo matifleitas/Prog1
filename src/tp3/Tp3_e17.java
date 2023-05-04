@@ -12,31 +12,33 @@ public class Tp3_e17 {
 		
 		while(loop == 0) { //bucle para pedir devuelta caracter y numero
 			char char_user=obtCaracter();
-			int num=ingresarNum();
+			//int num=ingresarNum();
 	
 			if((char_user>=MIN_MINUS)&&(char_user<=MAX_MINUS)) {
+				int num=ingresarNum();
 				if(num>=MIN&&num<=MAX) {
 					imprimir_tabla(num);
 				}
 			} else {
-				System.out.println("Caracter no valido");
+				System.out.println("Caracter ingresado es: "+char_user);
 			}
 		}
 	}
+	
 	public static char obtCaracter() {
 		char caract=' ';
 		BufferedReader entrada=new BufferedReader(new InputStreamReader(System.in));
 		try {
-			while(caract == ' ') {
 				System.out.println("Ingresar un caracter: ");
 				caract=entrada.readLine().charAt(0);
 				System.out.println("Caracter ingresado: "+caract);
 			}
-		}catch(Exception exc) {
+			catch(Exception exc) {
 			System.out.println( exc );
 		}
 		return caract;
 	}
+	
 	public static int ingresarNum() {
 		int num=0;
 		BufferedReader entrada=new BufferedReader(new InputStreamReader(System.in));
@@ -44,8 +46,8 @@ public class Tp3_e17 {
 			System.out.println("Ingresar un numero entero: ");
 			num=Integer.valueOf(entrada.readLine());	
 
-		}catch(Exception exc) {
-			System.out.println( exc );
+		}	catch(Exception exc) {
+				System.out.println( exc );
 		}
 		return num;
 	}
