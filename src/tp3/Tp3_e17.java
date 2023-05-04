@@ -46,8 +46,9 @@ public class Tp3_e17 {
 		return num;
 	}
 	public static void imprimir_tabla(int num) {
+		int MAX=10;
 		int resultado;
-		for(int i=1; i<=10; i++) {
+		for(int i=1; i<=MAX; i++) {
 			resultado = (i*num);
 			System.out.println(num+" * "+i+" = "+resultado);
 		}
