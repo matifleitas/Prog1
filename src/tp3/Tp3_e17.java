@@ -4,19 +4,30 @@ import java.io.InputStreamReader;
 
 public class Tp3_e17 {
 	public static void main(String[] args) {
-		obtCaracter();
+		final char MIN_MINUS='a';
+		final char MAX_MINUS='z';
+		final int MIN=1;
+		final int MAX=5;
+		char char_user=obtCaracter();
 		int num=ingresarNum();
-		if(num>=1&&num<=5) {
-			imprimir_tabla(num);
+		
+		if((char_user>=MIN_MINUS)&&(char_user<=MAX_MINUS)) {
+			if(num>=MIN&&num<=MAX) {
+				imprimir_tabla(num);
+			}
+		} else {
+			System.out.println("Caracter no valido");
 		}
 	}
 	public static char obtCaracter() {
 		char caract=' ';
 		BufferedReader entrada=new BufferedReader(new InputStreamReader(System.in));
 		try {
-			System.out.println("Ingresar un caracter: ");
-			caract=entrada.readLine().charAt(0);
-			System.out.println("Caracter ingresado: "+caract);
+			while(caract == ' ') {
+				System.out.println("Ingresar un caracter: ");
+				caract=entrada.readLine().charAt(0);
+				System.out.println("Caracter ingresado: "+caract);
+			}
 		}catch(Exception exc) {
 			System.out.println( exc );
 		}
@@ -36,7 +47,6 @@ public class Tp3_e17 {
 	}
 	public static void imprimir_tabla(int num) {
 		int resultado;
-		//int multiplo = 1;
 		for(int i=1; i<=10; i++) {
 			resultado = (i*num);
 			System.out.println(num+" * "+i+" = "+resultado);
