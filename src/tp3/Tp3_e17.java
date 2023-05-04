@@ -8,15 +8,19 @@ public class Tp3_e17 {
 		final char MAX_MINUS='z';
 		final int MIN=1;
 		final int MAX=5;
-		char char_user=obtCaracter();
-		int num=ingresarNum();
+		int loop=0;
 		
-		if((char_user>=MIN_MINUS)&&(char_user<=MAX_MINUS)) {
-			if(num>=MIN&&num<=MAX) {
-				imprimir_tabla(num);
+		while(loop == 0) { //bucle para pedir devuelta caracter y numero
+			char char_user=obtCaracter();
+			int num=ingresarNum();
+	
+			if((char_user>=MIN_MINUS)&&(char_user<=MAX_MINUS)) {
+				if(num>=MIN&&num<=MAX) {
+					imprimir_tabla(num);
+				}
+			} else {
+				System.out.println("Caracter no valido");
 			}
-		} else {
-			System.out.println("Caracter no valido");
 		}
 	}
 	public static char obtCaracter() {
