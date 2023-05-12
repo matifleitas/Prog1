@@ -24,7 +24,7 @@ public class Tp3_e17 {
 			}
 		}
 	}
-	
+
 	public static char obtCaracter() {
 		char caract=' ';
 		BufferedReader entrada=new BufferedReader(new InputStreamReader(System.in));
