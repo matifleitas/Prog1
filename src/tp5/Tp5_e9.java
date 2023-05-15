@@ -34,8 +34,8 @@ public class Tp5_e9 {
 			arrint[indice] = arrint[indice-1];
 			indice--;
 			if(indice == pos_insertar) { //si indice esta en la pos = 0, entra
-				arrint[indice] = arrint[num_user]; //cambia el valor de indice [0] 
-			}									   //por el num_user
+				arrint[indice] = arrint[num_user]; //cambia el valor de indice [0] por
+			}									   //el num_user
 		}
 	}
 }
