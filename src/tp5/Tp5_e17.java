@@ -1,32 +1,14 @@
 package tp5;
 
-import java.util.Random;
-
 public class Tp5_e17 {
 	public static final int MAX = 20;
-	public static final int MINVALOR = 1;
-	public static final int MAXVALOR = 9;
-	public static final double probabilidad_numero = 0.4;
 	public static void main(String [] args) {
-		int [] arrint = new int [MAX];
-		cargar_arreglo_aleatorio_secuencias_int(arrint);
+		int [] arrint = {0, 0, 0, 5, 3, 2, 0, 0, 5, 2, 0, 4, 2, 1, 0, 0, 4, 4, 0, 0};
+		//cargar_arreglo_aleatorio_secuencias_int(arrint);
 		imprimir_arreglo_secuencias_int(arrint);
 
 		obt_anteUltima_secuencia(arrint);
 	} 
-	public static void cargar_arreglo_aleatorio_secuencias_int(int [] arrint){
-		Random r = new Random();
-		arrint[0] = 0;
-		arrint[MAX-1] = 0;
-		for (int pos = 1; pos < MAX-1; pos++){
-			if (r.nextDouble()>probabilidad_numero){
-				arrint[pos]=(r.nextInt(MAXVALOR-MINVALOR+1) + MINVALOR);
-			}
-			else{
-				arrint[pos]=0;
-			}
-		}
-	}
 
 	public static void imprimir_arreglo_secuencias_int(int [] arr){
 		System.out.print("Arreglo de secuencias int\n|");
@@ -36,22 +18,24 @@ public class Tp5_e17 {
 			System.out.print("\n");
 	}
 	public static void obt_anteUltima_secuencia(int [] arrint) {
-		int inicio = MAX-1;
-		int contador = 0;
-		int pos_ini = 0;
-		int pos_fin = 0;
-		while(arrint[inicio] == 0) {
-			inicio --;
-			arrint[inicio] = pos_fin;
+	int ini = 0, fin = MAX-1;
+	int iterar_dos_sec = 2;
+		for(int i=0; i<=iterar_dos_sec; i++) {
+			ini=obt_inicio_secuencia_desde_fin(arrint, fin);
+			fin=obt_fin_secuencia_desde_fin(arrint, ini);			
 		}
-		while(arrint[pos_fin] != 0) {
-			inicio--;
-			arrint[inicio] = pos_ini;
-		}
-		contador++;
-		if(contador == 2) {
-			System.out.println("la pos de la anteultima sec es: "+pos_ini+" pos fin "+pos_fin);
-		}
+	}	
+	//empezar a iterar desde el final e ignorar la primer secuencia, la segunda es la que quiero
+	public static int obt_fin_secuencia_desde_fin(int [] arrint, int ini) {
+		while (ini<MAX && arrint[ini] != 0) {
+			ini--;
+		} return ini+1;
 	}
+	public static int obt_inicio_secuencia_desde_fin(int [] arrint, int fin) {
+		while(fin<MAX && arrint[fin] == 0) {
+			fin--;
+		} return fin;
+	}
+	no itera dos veces
 }
-assasad
+
