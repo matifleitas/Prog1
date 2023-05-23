@@ -9,7 +9,11 @@ public class Tp5_e4 {
 		cargar_arr_aleatorio_char(arrchar);
 		int pos = obt_pos_char_f(arrchar);
 		imprimir_arreglo_char(arrchar);
-		System.out.println("La posicion en el arreglo donde se encuentra el caracter f es en el: "+pos);
+		if(pos < 10) {
+			System.out.println("La posicion en el arreglo donde se encuentra el caracter f es en el: "+pos);
+		}else {
+			System.out.println("El caracter f no esta en el arreglo");
+		}
 	}
 	public static void cargar_arr_aleatorio_char(char [] arr){
 		Random r = new Random();
@@ -20,10 +24,12 @@ public class Tp5_e4 {
 	public static int obt_pos_char_f(char [] arrchar) {
 		char caract_buscado = 'f';
 		int pos_char = 0;
-		for(int pos=0; pos<MAX; pos++) {
-			if(arrchar[pos] != caract_buscado) {
-				pos_char++;
+		int pos = 0;
+		while(pos < MAX) {
+			if(arrchar[pos] == caract_buscado) {
+				pos = pos_char;
 			}
+			pos++;
 		}
 		return pos_char;
 	}
@@ -33,4 +39,3 @@ public class Tp5_e4 {
 		}
 	}
 }
-preguntar jisus

@@ -22,7 +22,8 @@ public class Tp5_e17 {
 	int iterar_dos_sec = 2;
 		for(int i=0; i<=iterar_dos_sec; i++) {
 			ini=obt_inicio_secuencia_desde_fin(arrint, fin);
-			fin=obt_fin_secuencia_desde_fin(arrint, ini);			
+			fin=obt_fin_secuencia_desde_fin(arrint, ini);	
+	asdasd
 		}
 	}	
 	//empezar a iterar desde el final e ignorar la primer secuencia, la segunda es la que quiero
@@ -36,6 +37,5 @@ public class Tp5_e17 {
 			fin--;
 		} return fin;
 	}
-	no itera dos veces
 }
 

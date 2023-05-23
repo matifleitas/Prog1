@@ -10,7 +10,6 @@ public class Tp5_e20 {
 	}
 	public static void eliminar_ocurrencias(int [] arrint, int [] arrPatron) {
 		int inicio = 0, fin = -1;
-		
 		while (inicio < MAX) { //mientras q ini sea menor que MAX
 			inicio = obt_ini_Sec(arrint, fin + 1);
 			if(inicio < MAX) { //si inicio es como maximo MAX-1, para no pasarse, de MAX
