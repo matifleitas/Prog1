@@ -4,7 +4,7 @@ en un arreglo.*/
 public class Tp5_e23 {
 	public static final int MAX = 20;
 	public static void main (String [] args) {
-		int [] arrint = {0, 0, 0, 5, 3, 2, 0, 0, 5, 2, 0, 0 ,2, 0, 3, 5, 6, 2, 0, 0};
+		int [] arrint = {0, 0, 0, 5, 3, 2, 0, 0, 5, 2, 0, 0 ,0, 4, 3, 5, 6, 0, 0, 0};
 		invertir_oden_ult_sec(arrint);
 		imprimir_arr_sec(arrint);
 	}
@@ -24,14 +24,14 @@ public class Tp5_e23 {
 		}
 	}
 	public static void invertir_orden_sec(int [] arrint, int ini, int fin) {
-        while (fin < ini) { //si el primer valor de la sec es menor que el ultimo
+        while (fin < ini) { //fin contiene el valor de inicio mirando el arr desde izquierda a derecha
             int temp = arrint[fin]; //guardar en temp mi primer valor del inicio
             arrint[fin] = arrint[ini];//el primer valor de la sec se transforma en el ultimo
             arrint[ini] = temp;//el ultimo valor pasa a valer lo que estaba en el primero
-            fin++; //incrementar amor para que se repita el procedimiento
+            fin++;
             ini--;
         }
-		
+        
 	}
 	public static int obt_ini_sec(int [] arrint, int ini) {
 		while(ini < MAX && arrint[ini] == 0) {
