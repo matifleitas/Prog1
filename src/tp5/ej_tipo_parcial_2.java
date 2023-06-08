@@ -19,9 +19,10 @@ public class ej_tipo_parcial_2 {
 				int tam_arr = fin-ini+1;
 				if(es_sec_patron(pat, ini, fin, arr, tam_arr)) {
 					cant_repetidos++;
-					if(cant_repetidos < N) {
+					if(cant_repetidos > N) {
 						for(int i=0; i<tam_arr; i++) {
 							corrimiento_izquierda(arr, ini);
+							fin--;
 						}
 					}
 				} 
@@ -36,6 +37,7 @@ public class ej_tipo_parcial_2 {
 			if(fin_pat < MAX) {
 				fin_pat = obt_fin_sec(pat, ini_pat);
 				int tam_pat = fin_pat-ini_pat + 1;
+				
 				if(tam_arr == tam_pat) {
 					while(ini <= fin && arr[ini] == pat[ini_pat]) {
 						ini++;
