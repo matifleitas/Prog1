@@ -17,7 +17,7 @@ public class ej_tipo_parcial_2 {
 			if(ini < MAX) {
 				fin=obt_fin_sec(arr, ini);
 				int tam_arr = fin-ini+1;
-				if(es_sec_patron(pat, ini, fin, arr)) {
+				if(es_sec_patron(pat, ini, fin, arr, tam_arr)) {
 					cant_repetidos++;
 					if(cant_repetidos < N) {
 						for(int i=0; i<tam_arr; i++) {
@@ -28,14 +28,15 @@ public class ej_tipo_parcial_2 {
 			}
 		}
 	}
-	public static boolean es_sec_patron(int []pat, int ini, int fin, int [] arr) {
+	public static boolean es_sec_patron(int []pat, int ini, int fin, int [] arr, int tam_arr) {
 		int ini_pat=0, fin_pat=-1;
 		boolean es_igual = false;
 		while(ini_pat < MAX) {
 			ini_pat = obt_ini_sec(pat, fin_pat+1);
 			if(fin_pat < MAX) {
 				fin_pat = obt_fin_sec(pat, ini_pat);
-				if(fin-ini + 1 == fin_pat-ini_pat + 1) {
+				int tam_pat = fin_pat-ini_pat + 1;
+				if(tam_arr == tam_pat) {
 					while(ini <= fin && arr[ini] == pat[ini_pat]) {
 						ini++;
 						ini_pat++;
