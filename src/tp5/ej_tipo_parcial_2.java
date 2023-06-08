@@ -10,7 +10,7 @@ public class ej_tipo_parcial_2 {
 		imprimir_arr_sec(arr);
 	}
 	public static void analizar_patrones_repetidos(int [] arr, int [] pat) {
-		int ini = 0, fin= -1;
+		int ini = 0, fin= -1, cant_repetidos=0;
 		
 		while(ini < MAX) {
 			ini=obt_ini_sec(arr, fin+1);
@@ -18,8 +18,11 @@ public class ej_tipo_parcial_2 {
 				fin=obt_fin_sec(arr, ini);
 				int tam_arr = fin-ini+1;
 				if(es_sec_patron(pat, ini, fin, arr)) {
-					for(int i=0; i<tam_arr; i++) {
-						corrimiento_izquierda(arr, ini);
+					cant_repetidos++;
+					if(cant_repetidos < N) {
+						for(int i=0; i<tam_arr; i++) {
+							corrimiento_izquierda(arr, ini);
+						}
 					}
 				} 
 			}
