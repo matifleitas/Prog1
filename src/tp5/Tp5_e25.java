@@ -17,20 +17,24 @@ public class Tp5_e25 {
 			if(ini<MAX) {
 				fin=obt_fin_sec(arr, ini);
 				int tam_arr = fin-ini + 1;
-				if(tam_arr == numero) {
+				if(tam_arr == numero) {	
 					copiar_secuencia(arr, ini, fin, arr_vacio);
 				} 
 			}
 		}
+		imprimir_arr_sec(arr_vacio);
 	}
 	public static void copiar_secuencia(int [] arr, int ini, int fin, int [] arr_vacio) {
 		int ini_vacio = 0;
 		while(ini <= fin) {
-			arr_vacio[ini_vacio] = arr[ini];
-			ini++;
-			ini_vacio++;
+			if(arr_vacio[ini_vacio] == 0) {
+				arr_vacio[ini_vacio] = arr[ini];
+				ini++;
+				ini_vacio ++;
+			} else {
+				ini_vacio++;
+			}
 		}
-		imprimir_arr_sec(arr_vacio);
 	}
 	public static int obt_ini_sec(int [] arr, int ini) {
 		while(ini < MAX && arr[ini] == 0) {
