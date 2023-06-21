@@ -1,5 +1,12 @@
 package tp6;
+/*Hacer un programa que dada la matriz de secuencias de
+caracteres definida y precargada, elimine de cada fila todas las
+ocurrencias de una secuencia patrón dada por un arreglo de
+caracteres de tamaño igual al tamaño de columnas de la matriz
+(sólo tiene esa secuencia con separadores al inicio y al final). Al
 
+eliminar en cada fila se pierden los valores haciendo los
+corrimientos.*/
 public class Tp6_e14 {
 	public static final int MAXFILA=4, MAXCOLUMNA=10;
 	public static final int SEPARADOR=' ';
@@ -48,12 +55,6 @@ public class Tp6_e14 {
 	 return es_patr;
 	}
 	public static boolean sonIguales(char [] arr, char [] patron, int ini, int fin, int finPat, int iniPat) {
-		/*for(int i=ini; i<=fin; i++) {
-			if(arr[i] == patron[iniPat]) {
-				es_igual=true;
-			}
-		} 
-		 return es_igual;*/
 		boolean es_igual=false;
 		while(ini <= fin && arr[ini] == patron[iniPat]) {
 			ini++;
@@ -63,7 +64,7 @@ public class Tp6_e14 {
 		 	}
 		 }
 		 return es_igual;
-		}
+	}
 	public static void eliminar_sec(char[] arr, int ini, int fin) {
 		for(int i=ini; i <= fin; i++) {
 			corrimiento_izq(arr, ini);
