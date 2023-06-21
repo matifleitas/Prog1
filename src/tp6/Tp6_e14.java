@@ -6,7 +6,7 @@ public class Tp6_e14 {
 	public static void main (String [] args) {
         char[][] matchar = {
 						{' ', ' ', ' ', ' ', 'o', 'b', 'x', 'l', ' ', ' '},
-		    			{' ', 'o', 'r', 'l', 't', ' ', 'u', 'p', 'c', ' '},
+		    			{' ', 'r', 'r', 'l', 't', ' ', 'u', 'p', 'c', ' '},
 		    			{' ', 'r', 'u', 's', ' ', ' ', 'r', ' ', 's', ' '},
 		    			{' ', 'r', ' ', 's', ' ', 'n', 'r', 'b', 'r', ' '}
 						};
@@ -35,7 +35,7 @@ public class Tp6_e14 {
 		boolean es_patr=false;
 		int iniPat=0, finPat=-1, tamPat=0;
 		while(iniPat < MAXCOLUMNA) {
-			iniPat=obt_ini_sec(patron, iniPat+1);
+			iniPat=obt_ini_sec(patron, finPat+1);
 			if(iniPat < MAXCOLUMNA) {
 				finPat=obt_fin_sec(patron, iniPat);
 				tamPat=finPat-iniPat+1;
@@ -48,21 +48,22 @@ public class Tp6_e14 {
 	 return es_patr;
 	}
 	public static boolean sonIguales(char [] arr, char [] patron, int ini, int fin, int finPat, int iniPat) {
-		boolean es_igual=false;
-		for(int i=ini; i<=fin; i++) {
+		/*for(int i=ini; i<=fin; i++) {
 			if(arr[i] == patron[iniPat]) {
-				iniPat++;
 				es_igual=true;
 			}
 		} 
+		 return es_igual;*/
+		boolean es_igual=false;
+		while(ini <= fin && arr[ini] == patron[iniPat]) {
+			ini++;
+		 	iniPat++;
+		 	if(ini>fin) {
+		 		es_igual=true;
+		 	}
+		 }
 		 return es_igual;
-		 //while(ini <= fin && arr[ini] == patron[iniPat]) {
-				//ini++;
-		 //	      iniPat++;
-		 //	}
-		 //return ini>fin;
-		//}
-	}
+		}
 	public static void eliminar_sec(char[] arr, int ini, int fin) {
 		for(int i=ini; i <= fin; i++) {
 			corrimiento_izq(arr, ini);
