@@ -1,9 +1,9 @@
 package tp6;
 /*Hacer un programa que dada la matriz de secuencias de
 caracteres definida y precargada, elimine de cada fila todas las
-ocurrencias de una secuencia patrón dada por un arreglo de
-caracteres de tamaño igual al tamaño de columnas de la matriz
-(sólo tiene esa secuencia con separadores al inicio y al final). Al
+ocurrencias de una secuencia patrÃ³n dada por un arreglo de
+caracteres de tamaÃ±o igual al tamaÃ±o de columnas de la matriz
+(sÃ³lo tiene esa secuencia con separadores al inicio y al final). Al
 
 eliminar en cada fila se pierden los valores haciendo los
 corrimientos.*/
@@ -12,14 +12,14 @@ public class Tp6_e14 {
 	public static final int SEPARADOR=' ';
 	public static void main (String [] args) {
         char[][] matchar = {
-						{' ', ' ', ' ', ' ', 'o', 'b', 'x', 'l', ' ', ' '},
-		    			{' ', 'r', 'r', 'l', 't', ' ', 'u', 'p', 'c', ' '},
-		    			{' ', 'r', 'u', 's', ' ', ' ', 'r', ' ', 's', ' '},
-		    			{' ', 'r', ' ', 's', ' ', 'n', 'r', 'b', 'r', ' '}
-						};
+				{' ', ' ', ' ', ' ', 'o', 'b', 'x', 'l', ' ', ' '},
+				{' ', 'r', 'r', 'l', 't', ' ', 'u', 'p', 'c', ' '},
+				{' ', 'r', 'u', 's', ' ', ' ', 'r', ' ', 's', ' '},
+				{' ', 'r', ' ', 's', ' ', 'n', 'r', 'b', 'r', ' '}
+			   };
         char [] patron = {' ', ' ', ' ', 'r', 'u', 's', ' ', ' ', ' ', ' '};
         eliminar_sec_patron(matchar, patron);
-		imprimir_matriz_char(matchar);
+	imprimir_matriz_char(matchar);
 	}
 	public static void eliminar_sec_patron(char [] [] matchar, char[] patron) {
 		for(int fila=0; fila<MAXFILA; fila++) {
@@ -29,7 +29,6 @@ public class Tp6_e14 {
 				if(ini < MAXCOLUMNA) {
 					fin=obt_fin_sec(matchar[fila], ini);
 					tam=fin-ini+1;
-					
 					if(es_sec_patron(matchar[fila],patron, ini, fin, tam)) {
 						eliminar_sec(matchar[fila], ini, fin);
 						fin = ini;
@@ -51,7 +50,6 @@ public class Tp6_e14 {
 				}
 			}
 		}
-		
 	 return es_patr;
 	}
 	public static boolean sonIguales(char [] arr, char [] patron, int ini, int fin, int finPat, int iniPat) {
