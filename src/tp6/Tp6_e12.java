@@ -18,33 +18,28 @@ public class Tp6_e12 {
 							};
 		imprimir_matriz_char(matchar);
 		encontrar_anteult_sec(matchar);
-	
 	}
 	public static void encontrar_anteult_sec(char [][] matchar) {
 		for(int fila=0; fila < MAXFILA; fila++) {
-			int ini=0, fin=-1, contador=0, iniAnteult=0, finAnteult=0;
-			while(ini < MAXCOLUMNA) {
+			int ini=0, fin=0, contador=0, iniAnteult=0, finAnteult=0;
+			while((ini > 0)&&(contador<2)) {
 				ini=obt_ini_sec(matchar[fila], fin+1);
-				if(ini < MAXCOLUMNA) {
+				if(ini > 0) {
 					fin=obt_fin_sec(matchar[fila], ini);
 					contador++;
-					if(contador == 2) {
-						iniAnteult=ini;
-						finAnteult=fin;
-					}ij
 				}
 			}
 			System.out.println("El inicio de la anteultima secuencia es: "+finAnteult+" y el fin es: "+iniAnteult);
 		}
 	}
-	public static int obt_ini_sec(char [] arr, int ini) {
+	public static int obt_ini_sec(char [][] mat, int ini) {
 		ini=MAXCOLUMNA-1;
-		while(ini < MAXCOLUMNA && arr[ini] == SEPARADOR) {
+		while(ini > 0 && mat[f][ini] == SEPARADOR) {
 			ini--;
 		} return ini;
 	}
-	public static int obt_fin_sec(char[] arr, int ini) {
-		while(ini < MAXCOLUMNA && arr[ini] != SEPARADOR) {
+	public static int obt_fin_sec(char [][] mat, int ini) {
+		while(ini > 0 && mat[f][ini] != SEPARADOR) {
 			ini--;
 		} return ini+1;
 	}
@@ -54,18 +49,6 @@ public class Tp6_e12 {
 		System.out.println("");
 		}
 	}
-	/*public static void cargar_matriz_aleatorio_secuencias_char(char [][] mat){
-		for (int fila = 0; fila < MAXFILA; fila++){
-			cargar_arreglo_aleatorio_char(mat[fila]);
-		}
-		System.out.println("");
-	}*/
-	/*public static void cargar_arreglo_aleatorio_char(char [] arr){
-		Random r = new Random();
-		for (int pos = 0; pos < MAXCOLUMNA; pos++){
-		arr[pos]=(char)(r.nextInt(26) + 'a');
-		}
-	}*/
 	public static void imprimir_arreglo_char(char [] arr){
 		for (int pos = 0; pos < MAXCOLUMNA; pos++){
 			System.out.print(arr[pos]+"|");
