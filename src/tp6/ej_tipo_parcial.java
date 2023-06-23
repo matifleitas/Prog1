@@ -24,7 +24,7 @@ public class ej_tipo_parcial {
 					if(matint[fila][ini] < 0) {
 						valor_positivo = volver_positivo_inicio(matint[fila], ini);
 						descomprimir_sec(matint[fila], ini, fin, valor_positivo - 2);
-						ini = obt_ini_sec(matint[fila], fin + (valor_positivo - 2));
+						fin=fin+valor_positivo - 2;
 					}
 				}
 			}

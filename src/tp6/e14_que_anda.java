@@ -2,7 +2,8 @@ package tp6;
 
 public class e14_que_anda {
     public static final int MAXFILA = 3;
-    public static final int MAXCOLUMNA = 9;    
+    public static final int MAXCOLUMNA = 9;  
+    public static final char SEPARADOR = ' ';
     public static void main (String [] args){
     char [] arrPa =           {' ',' ',' ','a','b','c','d',' ',' '};
 
@@ -11,43 +12,45 @@ public class e14_que_anda {
                               {' ','a','b',' ','a','b','c','d',' '}             
                             };
     imprimir_matriz(matChar);
-    //imprimir_arr(arrPa);
+    System.out.println("-------------------");
 
-        for(int fila = 0; fila<MAXFILA; fila++){
-            encontrar_secuencias(matChar[fila], arrPa);
-        }                    
-        imprimir_matriz(matChar);
-
-
-
+    encontrar_secuencias(matChar, arrPa);             
+    imprimir_matriz(matChar);
     }
 
-    public static void encontrar_secuencias(char [] arr, char [] arrPa){
-        int inicio =0;
-        int fin =0;
-        int inicio_pa= buscar_ini_secuencia(arrPa, fin);
-        int fin_pa = buscar_fin_secuencia(arrPa, inicio_pa);
-        int tamaño;
-        int tamaño_p = fin_pa-inicio_pa+1;
+    public static void encontrar_secuencias(char [][] matChar, char [] arrPa){
+        for(int fila = 0; fila<MAXFILA; fila++){
+    	int inicio =0, fin =0;
         while(inicio<MAXCOLUMNA){
-            inicio = buscar_ini_secuencia(arr, fin+1);
+            inicio = buscar_ini_secuencia(matChar[fila], fin+1);
             if(inicio<MAXCOLUMNA){
-                fin = buscar_fin_secuencia(arr, inicio);
-                tamaño = fin-inicio+1;
-                if(tamaño == tamaño_p){
-                    if(encontrar_sec_iguales(arr,inicio, fin, arrPa, inicio_pa)){
-                        eliminar_secuencias(arr,inicio, fin);
-                        fin = inicio-2;
+                fin = buscar_fin_secuencia(matChar[fila], inicio);
+              
+                if(es_secPatron(matChar[fila],inicio, fin, arrPa)){
+                    eliminar_secuencias(matChar[fila],inicio, fin);
+                    fin = inicio-2;
                     }    
                 }
             }
-        //System.out.println(fin);
         }
-        
+    }
+    public static boolean es_secPatron(char [] arr, int inicio, int fin, char []arrPa) {
+    	boolean es_patron=false;
+    	int iniPat=0, finPat=-1;
+    	while(inicio<MAXCOLUMNA){
+            iniPat = buscar_ini_secuencia(arrPa, finPat+1);
+            if(inicio<MAXCOLUMNA){
+                finPat = buscar_fin_secuencia(arrPa, iniPat);
+                if(fin-inicio+1==finPat-iniPat+1 && son_iguales(arr, inicio, fin, arrPa, iniPat)) {
+                	es_patron = true;
+                }
+            }
+    	}
+    	return es_patron;
     }
 
 
-    public static boolean encontrar_sec_iguales(char [] arr, int inicio, int fin, char [] arrPa, int inicio_pa){
+    public static boolean son_iguales(char [] arr, int inicio, int fin, char [] arrPa, int inicio_pa){
         while(inicio<=fin && arr[inicio] == arrPa[inicio_pa]){
             inicio++;
             inicio_pa++;
@@ -69,13 +72,13 @@ public class e14_que_anda {
     }
 
     public static int buscar_ini_secuencia(char [] arr, int pos){
-        while(pos<MAXCOLUMNA && arr[pos] == ' '){
+        while(pos<MAXCOLUMNA && arr[pos] == SEPARADOR){
             pos++;
         }return pos;
     }
 
     public static int buscar_fin_secuencia(char [] arr, int pos){
-        while(pos<MAXCOLUMNA && arr[pos] != ' '){
+        while(pos<MAXCOLUMNA && arr[pos] != SEPARADOR){
             pos++;
         }return pos-1;
     }
