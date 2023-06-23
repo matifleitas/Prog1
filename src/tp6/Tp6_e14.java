@@ -17,35 +17,35 @@ public class Tp6_e14 {
 			    			{' ', 'r', 'u', 's', ' ', ' ', 'r', ' ', 's', ' '},
 			    			{' ', 'r', ' ', 's', ' ', 'n', 'r', 'b', 'r', ' '}
 							};
-        char [] patron = {' ', ' ', ' ', 'r', 'u', 's', ' ', ' ', ' ', ' '};
+        char [] patron = {' ', ' ', 'r', 'r', 'l', 't', ' ', ' ', ' ', ' '};
+        imprimir_matriz_char(matchar);
+        System.out.println("---------------------------");
         eliminar_sec_patron(matchar, patron);
 		imprimir_matriz_char(matchar);
 	}
-	public static void eliminar_sec_patron(char [] [] matchar, char[] patron) {
+	public static void eliminar_sec_patron(char [][] matchar, char[] patron) {
 		for(int fila=0; fila<MAXFILA; fila++) {
-			int ini=0, fin=-1,tam=0;
+			int ini=0, fin=-1;
 			while(ini < MAXCOLUMNA) {
 				ini=obt_ini_sec(matchar[fila], fin+1);
 				if(ini < MAXCOLUMNA) {
 					fin=obt_fin_sec(matchar[fila], ini);
-					tam=fin-ini+1;
-					if(es_sec_patron(matchar[fila],patron, ini, fin, tam)) {
+					if(es_sec_patron(matchar[fila], ini, fin, patron)) {
 						eliminar_sec(matchar[fila], ini, fin);
-						fin = ini;
+						fin = ini-2;
 					} 
 				}
 			}
 		}
 	}
-	public static boolean es_sec_patron(char[] arr, char[] patron, int ini, int fin, int tam) {
+	public static boolean es_sec_patron(char[] arr, int ini, int fin, char[] patron) {
 		boolean es_patr=false;
-		int iniPat=0, finPat=-1, tamPat=0;
-		while(iniPat < MAXCOLUMNA) {
+		int iniPat=0, finPat=-1;
+		while(iniPat < MAXCOLUMNA && !es_patr) {
 			iniPat=obt_ini_sec(patron, finPat+1);
 			if(iniPat < MAXCOLUMNA) {
 				finPat=obt_fin_sec(patron, iniPat);
-				tamPat=finPat-iniPat+1;
-				if((tam==tamPat) && (sonIguales(arr, patron, ini, fin, iniPat, finPat))) {
+				if((fin-ini+1==finPat-iniPat+1) && sonIguales(arr, patron, ini, fin, iniPat, finPat)) {
 					es_patr=true;
 				}
 			}
@@ -53,12 +53,10 @@ public class Tp6_e14 {
 	 return es_patr;
 	}
 	public static boolean sonIguales(char [] arr, char [] patron, int ini, int fin, int finPat, int iniPat) {
-		//boolean es_igual=false;
 		while(ini <= fin && arr[ini] == patron[iniPat]) {
 			ini++;
-		 	iniPat++;
-		 }
-		 return ini>fin;
+			iniPat++;
+		 }return ini > fin;
 	}
 	public static void eliminar_sec(char[] arr, int ini, int fin) {
 		for(int i=ini; i <= fin; i++) {

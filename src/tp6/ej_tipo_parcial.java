@@ -2,7 +2,7 @@ package tp6;
 
 public class ej_tipo_parcial {
 	public static final int MAXFILA=3, MAXCOLUMNA=20;
-	public static final int X=3;
+	public static final int X=3, SEPARADOR=0;
 	public static void main (String[]args) {
 		int [][] matint = {
 				            {0,-8,67,0,14,0,-4,33,0,5,98,0,0,0,0,0,0,0,0,0},
@@ -21,7 +21,7 @@ public class ej_tipo_parcial {
 				ini=obt_ini_sec(matint[fila], fin+1);
 				if(ini < MAXCOLUMNA) {
 					fin=obt_fin_sec(matint[fila], ini);	
-					if(ini_es_negativo(matint[fila], ini, fin)) {
+					if(matint[fila][ini] < 0) {
 						valor_positivo = volver_positivo_inicio(matint[fila], ini);
 						descomprimir_sec(matint[fila], ini, fin, valor_positivo - 2);
 						ini = obt_ini_sec(matint[fila], fin + (valor_positivo - 2));
@@ -34,12 +34,6 @@ public class ej_tipo_parcial {
 		int ini_positivo=0;
 		ini_positivo = arr[ini]*-1;
 		return ini_positivo;
-	}
-	public static boolean ini_es_negativo(int [] arr, int ini, int fin) {
-		boolean es_negativo=false;
-		if(arr[ini] < 0) {
-			es_negativo = true;
-		} return es_negativo;
 	}
 	public static void descomprimir_sec(int [] arr, int ini, int fin, int valor_positivo) {
 		int pixel_repetido = arr[fin];
@@ -58,12 +52,12 @@ public class ej_tipo_parcial {
 	}
 	
 	public static int obt_ini_sec(int [] arr, int ini) {
-		while(ini < MAXCOLUMNA && arr[ini] == 0) {
+		while(ini < MAXCOLUMNA && arr[ini] == SEPARADOR) {
 			ini++;
 		} return ini;
 	}
 	public static int obt_fin_sec(int [] arr, int ini) {
-		while(ini < MAXCOLUMNA && arr[ini] != 0) {
+		while(ini < MAXCOLUMNA && arr[ini] != SEPARADOR) {
 			ini++;
 		} return ini-1;
 	}
