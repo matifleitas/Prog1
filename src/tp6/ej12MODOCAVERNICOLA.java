@@ -1,10 +1,6 @@
 package tp6;
 
-/*Hacer un programa que dada la matriz de secuencias de
-caracteres definida y precargada, permita encontrar por cada fila
-la posición de inicio y fin de la anteúltima secuencia (considerar
-comenzar a buscarla a partir de la última posición de la fila).*/
-public class Tp6_e12 {
+public class ej12MODOCAVERNICOLA {
 	public static final int MAXFILA=4, MAXCOLUMNA=10;
 	public static final char SEPARADOR = ' ';
 	public static void main (String [] args) {
@@ -15,30 +11,25 @@ public class Tp6_e12 {
 	            			{' ', 'q', 'p', 's', ' ', 'n', 'r', 'b', 'r', ' '}
 							};
 		imprimir_matriz_char(matchar);
-		encontrar_anteult_sec(matchar);
+		metodoPoronga(matchar);
 	}
-	public static void encontrar_anteult_sec(char [][] matchar) {
+	public static void metodoPoronga(char[][] matchar) { 
 		for(int fila=0; fila<MAXFILA; fila++) {
-			int ini=1, fin=MAXCOLUMNA, contador=0;
-			while(ini > 0 && contador < 2) {
-				ini=obt_ini_sec(matchar[fila], fin-1);
-				if(ini > 0) {
-					fin=obt_fin_sec(matchar[fila], ini);
-					contador++;
+			int ini=0, fin=0, contador=0, i=MAXCOLUMNA-1;
+			while(i > 0 && contador < 2) {
+				//ini=obt_ini_sec(matchar[fila], i);
+				while(matchar[fila][i] == SEPARADOR) {
+					i--;
+				} 
+				ini=i;
+				while(matchar[fila][i] != SEPARADOR) {
+					i--;
 				}
+				fin=i+1;
+				contador++;
 			}
 			System.out.println("Para la fila, "+fila+" inicio en: "+fin+" fin en: "+ini);
 		}
-	}
-	public static int obt_ini_sec(char [] arr, int ini) {
-		while(ini > 0 && arr[ini] == SEPARADOR) {
-			ini--;
-		} return ini;
-	}
-	public static int obt_fin_sec(char [] arr, int ini) {
-		while(ini > 0 && arr[ini] != SEPARADOR) {
-			ini--;
-		} return ini+1;
 	}
 
 	public static void imprimir_matriz_char(char [][] mat){
@@ -51,5 +42,5 @@ public class Tp6_e12 {
 		for (int pos = 0; pos < MAXCOLUMNA; pos++){
 			System.out.print(arr[pos]+"|");
 			}
-		}
+	}
 }

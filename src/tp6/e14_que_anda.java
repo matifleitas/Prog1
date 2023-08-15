@@ -5,11 +5,11 @@ public class e14_que_anda {
     public static final int MAXCOLUMNA = 9;  
     public static final char SEPARADOR = ' ';
     public static void main (String [] args){
-    char [] arrPa =           {' ',' ',' ','a','b','c','d',' ',' '};
+    char [] arrPa =           {' ',' ',' ','a','h',' ',' ',' ',' '};
 
-    char [][] matChar = {     {' ','a','b',' ','a','b','d','c',' '} ,
-                              {' ','a','b',' ','a','b','c','e',' '},
-                              {' ','a','b',' ','a','b','c','d',' '}             
+    char [][] matChar = {     {' ','a','f',' ','a','b','d','c',' '} ,
+                              {' ','a','h',' ','a','z','h','e',' '},
+                              {' ','j','b',' ','a','b','c','d',' '}             
                             };
     imprimir_matriz(matChar);
     System.out.println("-------------------");
@@ -20,28 +20,28 @@ public class e14_que_anda {
 
     public static void encontrar_secuencias(char [][] matChar, char [] arrPa){
         for(int fila = 0; fila<MAXFILA; fila++){
-    	int inicio =0, fin =0;
-        while(inicio<MAXCOLUMNA){
-            inicio = buscar_ini_secuencia(matChar[fila], fin+1);
-            if(inicio<MAXCOLUMNA){
-                fin = buscar_fin_secuencia(matChar[fila], inicio);
-              
-                if(es_secPatron(matChar[fila],inicio, fin, arrPa)){
-                    eliminar_secuencias(matChar[fila],inicio, fin);
-                    fin = inicio-2;
-                    }    
-                }
-            }
+    	int inicio =0, fin =-1;
+	        while(inicio<MAXCOLUMNA){
+	            inicio = buscar_ini_secuencia(matChar[fila], fin+1);
+	            if(inicio<MAXCOLUMNA){
+	                fin = buscar_fin_secuencia(matChar[fila], inicio);
+	                if(es_secPatron(matChar[fila],inicio, fin, arrPa)){
+	                    eliminar_secuencias(matChar[fila],inicio, fin);
+	                    fin = inicio;
+	                }    
+	           }
+	       }
         }
     }
     public static boolean es_secPatron(char [] arr, int inicio, int fin, char []arrPa) {
     	boolean es_patron=false;
     	int iniPat=0, finPat=-1;
-    	while(inicio<MAXCOLUMNA){
+    	while(iniPat<MAXCOLUMNA && !es_patron){
             iniPat = buscar_ini_secuencia(arrPa, finPat+1);
-            if(inicio<MAXCOLUMNA){
+            if(iniPat<MAXCOLUMNA){
                 finPat = buscar_fin_secuencia(arrPa, iniPat);
-                if(fin-inicio+1==finPat-iniPat+1 && son_iguales(arr, inicio, fin, arrPa, iniPat)) {
+       
+                if((fin-inicio+1==finPat-iniPat+1) && son_iguales(arr, inicio, fin, arrPa, iniPat)) {
                 	es_patron = true;
                 }
             }
@@ -54,13 +54,12 @@ public class e14_que_anda {
         while(inicio<=fin && arr[inicio] == arrPa[inicio_pa]){
             inicio++;
             inicio_pa++;
-        }return inicio>fin;
+        }return inicio > fin;
     }
 
     public static void eliminar_secuencias(char[] arr, int inicio, int fin){
         for(int i = inicio; i<=fin; i++){
             corrimiento_a_izq(arr, inicio);
-            
         }
     }
 
